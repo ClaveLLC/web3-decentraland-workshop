@@ -1,9 +1,11 @@
 import * as utils from '@dcl/ecs-scene-utils'
 import { createChannel } from 'node_modules/decentraland-builder-scripts/channel'
+import {isNFTHolder} from "../../utils/contract-calls"
 
 let _door : IEntity;
 const _multiplayerEnabled = true;
 let _doorAudioSource
+let _accessDeniedSource
 
 export function createDoor(parent:IEntity) : void {
   const openPos: Quaternion = Quaternion.Euler(0, 180, 0)
@@ -38,6 +40,8 @@ export function createDoor(parent:IEntity) : void {
   _door.addComponent(doorMaterial)
   _doorAudioSource = new AudioSource(new AudioClip("models/door/door_squeak.mp3"))
   _door.addComponent(_doorAudioSource)
+  _accessDeniedSource = new AudioSource(new AudioClip("models/door/access_denied.mp3"))
+  doorPivot.addComponent(_accessDeniedSource);
   // Set the door as a child of doorPivot
   _door.setParent(doorPivot)
   //toggle behavior for doorPivot
@@ -103,13 +107,30 @@ const onTouchDoor = function() : OnPointerDown {
   })
  }
 
+export async function openDoorForKeyHolder(): Promise<boolean>{
+  
+  if(await isKeyHolder()){
+    return openDoor();
+  }
+  else
+  {
+    _accessDeniedSource.playOnce()
+  }
+
+  return false;
+}
+
+const isKeyHolder = async function () : Promise<boolean>{
+  return isNFTHolder();
+}
+
 export function setDoor(open:boolean) : void {
   _door.getComponent(utils.ToggleComponent).set(open ? utils.ToggleState.On : utils.ToggleState.Off)
 }
 
-export function toogleDoor():void {
+export async function toogleDoor():Promise<void> {
   if(!isDoorOpen())
-    openDoor()
+    await(openDoorForKeyHolder())
   else
     closeDoor()
 }

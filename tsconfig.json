@@ -5,6 +5,9 @@
     "paths": {
       "@dcl/ecs-scene-utils": [
         "node_modules/@dcl/ecs-scene-utils/dist/index.d.ts"
+      ],
+      "eth-connect": [
+        "node_modules/eth-connect/eth-connect.d.ts"
       ]
     },
     "baseUrl": "."

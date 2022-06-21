@@ -2,7 +2,9 @@
 
 El código que aloja este respositorio fue utilizado por el equipo web3 de Clave para presentar conceptos prácticos de desarrollo  de una escena utilizando el SDK de Decentraland en el evento Minting Summit 2022 en el marco del workshop “**How to create Experiences in the Decentraland Metaverse”**.
 
-Las iteraciones sobre el código fuente no buscan completar una funcionalidad sino que servir de apoyo a la dinámica del workshop.  
+La experiencia que el equipo decidió compartir fue adquirida durante el proceso de creación y publicación de una escena propia que puede visitarse ingresando [_aquí_](https://play.decentraland.org/?position=-22,-140) (Decentraland, coordenadas -22,-140)
+
+![enter image description here](https://drive.google.com/uc?id=17gj0nIzSTa2LH6EpsVN8hXc2sCuqc8J5)
 
 # **Objetivo**
 
@@ -12,6 +14,8 @@ El workshop buscó cubrir los siguientes puntos:
 -   Experiencia multijugador y uso de librerías peer to peer para sincronización.
 -   Interacción con contrato inteligente.
 -   Despliegue de escena en tres ambientes distintos y sus beneficios.
+
+Las iteraciones sobre el código fuente no buscan completar una funcionalidad sino que servir de apoyo a la dinámica del workshop.  
 
 # **Requisitos**
 -   Versión de node 14 o posterior.
@@ -28,13 +32,13 @@ Para el workshop se utilizó versión _3.10.2_.
 
 _NOTA:  [Guía completa de instalación de SDK](https://docs.decentraland.org/development-guide/SDK-101/)._
 
----
+<hr>
 
 Se utiliza librería _[decentraland-ecs-utils](https://github.com/decentraland/decentraland-ecs-utils)_ que proporciona numerosas herramientas y utilidades para el desarrollo de una escena y se instala ejecutando: 
 
 _npm install @dcl/ecs-scene-utils -B_
 
----
+<hr>
 
 Para interactuar con contratos inteligentes se utiliza librería _[eth connect](https://github.com/decentraland/eth-connect)_ que se instala ejecutando:
 
@@ -53,7 +57,7 @@ _dcl start_ o  _dcl start --web3_ en caso de querer conectarse con billetera.
 
 **Heroku**
 
-Este ambiente permite compartir escena con otros usuarios y probar  [experiencia multijugador](https://docs.decentraland.org/development-guide/remote-scene-considerations/).
+Este ambiente permite compartir escena con otros usuarios y probar  [_experiencia multijugador_](https://docs.decentraland.org/development-guide/remote-scene-considerations/).
 
 _NOTA:  [Guia completa para previsualizar escena en Heroku](https://docs.decentraland.org/development-guide/deploy-third-party/)_.
 
@@ -65,7 +69,7 @@ Para desplegar escena se debe ejecutar:
 
 _dcl deploy --target_ [_peer-testing.decentraland.org_](http://peer-testing.decentraland.org/)
 
-Se podrá previsualizar ingresando  [aquí](https://play.decentraland.org/?CATALYST=peer-testing.decentraland.org) navegando a las coordenadas donde se despliega la escena que se encuentran especificadas en el archivo _scenes.json_.
+Se podrá previsualizar ingresando  [_aquí_](https://play.decentraland.org/?CATALYST=peer-testing.decentraland.org) navegando a las coordenadas donde se despliega la escena que se encuentran especificadas en el archivo _scenes.json_.
 
 _NOTA:  [Guia completa para publicar en test o producción](https://docs.decentraland.org/development-guide/publishing/)._
 
@@ -77,12 +81,12 @@ Se trabajó sobre _branch develop_ y los commits que abarcan el workshop son los
 -   Commit 4 (door added to scene / multiplayer enabled)
 -   Commit 5 (smart contract interaction)
 
-Se extrajo código del proyecto  [Open-Door](https://github.com/decentraland-scenes/Open-door)  del repositorio _decentraland-scenes_.
+Se extrajo código del proyecto  [_Open-Door_](https://github.com/decentraland-scenes/Open-door)  del repositorio _decentraland-scenes_.
 
 # **A tener en cuenta**
 -   El contrato inteligente utilizado admite minteo de un máximo de 4 NFTs. (uno ya fue minteado durante el workshop)
 -   El contrato inteligente fue deployado en Ropsten. (Red de pruebas de Ethereum)
 
 # **Oportunidades de mejora**
--  Archivos door.ts y key.ts extraerlos como  [smart items](https://docs.decentraland.org/development-guide/smart-items/).
+-  Archivos door.ts y key.ts extraerlos como  [_smart items_](https://docs.decentraland.org/development-guide/smart-items/).
 -  Mejorar interacciones con smart contract. Por ej, detectar si la transacción falla, reemplazar timmer por eventos que debieran emitirse en el contrato inteligente.
